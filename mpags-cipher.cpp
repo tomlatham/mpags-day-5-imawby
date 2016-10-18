@@ -10,8 +10,8 @@
 int main(int argc, char* argv[])
 {
   // Convert the command-line arguments into a more easily usable form
-  const std::vector<const std::string> cmdLineArgs {argv, argv+argc};
-  typedef std::vector<const std::string>::size_type size_type;
+  const std::vector<std::string> cmdLineArgs {argv, argv+argc};
+  typedef std::vector<std::string>::size_type size_type;
   const size_type nCmdLineArgs {cmdLineArgs.size()};
 
   // Options that might be set by the command-line arguments
