@@ -8,7 +8,9 @@ bool processCommandLine(const std::vector<std::string>& args,
                         bool& helpRequested,
                         bool& versionRequested,
                         std::string& inputFile,
-                        std::string& outputFile)
+                        std::string& outputFile,
+                        size_t& cipher_key,
+                        bool& encrypt)
 {
   // Status flag to indicate whether or not the parsing was successful
   bool processStatus(true);
@@ -38,7 +40,7 @@ bool processCommandLine(const std::vector<std::string>& args,
         std::cerr << "[error] -i requires a filename argument" << std::endl;
         // Set the flag to indicate the error and terminate the loop
         processStatus = false;
-	break;
+        break;
       }
       else {
         // Got filename, so assign value and advance past it
@@ -53,13 +55,34 @@ bool processCommandLine(const std::vector<std::string>& args,
         std::cerr << "[error] -o requires a filename argument" << std::endl;
         // Set the flag to indicate the error and terminate the loop
         processStatus = false;
-	break;
+        break;
       }
       else {
         // Got filename, so assign value and advance past it
         outputFile = args[i+1];
         ++i;
       }
+    }
+    else if (args[i] == "-k") {
+      // Handle cipher key option
+      // Next element is the key unless -k is the last argument
+      if (i == nArgs-1) {
+        std::cerr << "[error] -k requires a positive integer argument" << std::endl;
+        // Set the flag to indicate the error and terminate the loop
+        processStatus = false;
+        break;
+      }
+      else {
+        // Got the key as a string, so convert it to an unsigned long, assign the value and advance past it
+        cipher_key = std::stoul(args[i+1]);
+        ++i;
+      }
+    }
+    else if ( args[i] == "--encrypt" ) {
+            encrypt = true;
+    }
+    else if ( args[i] == "--decrypt" ) {
+            encrypt = false;
     }
     else {
       // Have encoutered an unknown flag, output an error message, set the flag
