@@ -9,7 +9,7 @@ bool processCommandLine(const std::vector<std::string>& args,
                         bool& versionRequested,
                         std::string& inputFile,
                         std::string& outputFile,
-                        size_t& cipher_key,
+                        std::string& cipher_key,
                         bool& encrypt)
 {
   // Status flag to indicate whether or not the parsing was successful
@@ -73,8 +73,8 @@ bool processCommandLine(const std::vector<std::string>& args,
         break;
       }
       else {
-        // Got the key as a string, so convert it to an unsigned long, assign the value and advance past it
-        cipher_key = std::stoul(args[i+1]);
+        // Got the key, so assign the value and advance past it
+        cipher_key = args[i+1];
         ++i;
       }
     }

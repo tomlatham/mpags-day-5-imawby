@@ -9,7 +9,7 @@ bool processCommandLine(const std::vector<std::string>& args,
                         bool& versionRequested,
                         std::string& inputFile,
                         std::string& outputFile,
-                        size_t& cipher_key,
+                        std::string& cipher_key,
                         bool& encrypt);
 
 #endif // MPAGSCIPHER_PROCESSCOMMANDLINE_HPP 

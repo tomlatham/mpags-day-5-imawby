@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
   bool versionRequested {false};
   std::string inputFile {""};
   std::string outputFile {""};
-  size_t cipher_key {0};
+  std::string cipher_key {"0"};
   bool encrypt {true};
 
   // Process command line arguments
@@ -93,7 +93,9 @@ int main(int argc, char* argv[])
   }
 
   // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-  std::string outputText = runCaesarCipher( inputText, cipher_key, encrypt );
+  // We have the key as a string, but the Caesar cipher needs an unsigned long, so we first need to convert it
+  const size_t caesar_key = std::stoul(cipher_key);
+  std::string outputText = runCaesarCipher( inputText, caesar_key, encrypt );
 
   // Output the transliterated text
   if (!outputFile.empty()) {
