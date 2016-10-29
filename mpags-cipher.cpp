@@ -94,8 +94,24 @@ int main(int argc, char* argv[])
 
   // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
   // We have the key as a string, but the Caesar cipher needs an unsigned long, so we first need to convert it
-  const size_t caesar_key = std::stoul(cipher_key);
-  std::string outputText = runCaesarCipher( inputText, caesar_key, encrypt );
+  // Since the conversion can throw an exception if the string does not represent an integer, we should handle that eventuality
+  // (we have not covered exceptions at all in the course so far but could do so briefly in week 6 if there is sufficient interest
+  // - we include the code below for completeness, feel free to ask us about it)
+  std::string outputText {""};
+  try {
+
+    const size_t caesar_key = std::stoul(cipher_key);
+    outputText = runCaesarCipher( inputText, caesar_key, encrypt );
+
+  } catch ( const std::invalid_argument& ) {
+    std::cerr << "[error] cipher key must be an unsigned long integer for Caesar cipher,\n"
+	      << "        the supplied key (" << cipher_key << ") could not be successfully converted" << std::endl;
+    return 1;
+  } catch ( const std::out_of_range& ) {
+    std::cerr << "[error] cipher key must be an unsigned long integer for Caesar cipher,\n"
+	      << "        the supplied key (" << cipher_key << ") was not of the right range" << std::endl;
+    return 1;
+  }
 
   // Output the transliterated text
   if (!outputFile.empty()) {
