@@ -70,7 +70,7 @@ Available options:
   -o FILE          Write processed text to FILE
                    Stdout will be used if not supplied
 
-  -k KEY           Specify the cipher KEY (a positive integer)
+  -k KEY           Specify the cipher KEY
                    A null key, i.e. no encryption, is used if not supplied
 
   --encrypt        Will use the cipher to encrypt the input text (default behaviour)
