@@ -14,8 +14,7 @@ directory in which to run `cmake` and the build, and change into it:
 
 ```
 $ ls
-CMakeLists.txt   LICENSE          README.md        mpags-cipher.cpp
-Documentation    MPAGSCipher      Testing
+CMakeLists.txt   LICENSE          MPAGSCipher      README.md        mpags-cipher.cpp
 $ mkdir ../Build
 $ cd ../Build
 ```
@@ -96,7 +95,7 @@ At present only the Caesar Cipher is supported.
 Under this directory, the code and associated files are organised as
 follows:
 
-```sh
+```
 MPAGS-Code
 ├── README.md             This file, describes the project
 ├── LICENSE               License file, in our case MIT
