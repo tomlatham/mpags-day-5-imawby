@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
   bool encrypt {true};
 
   // Process command line arguments
-  bool cmdLineStatus = processCommandLine(cmdLineArgs, helpRequested, versionRequested, inputFile, outputFile, cipher_key, encrypt);
+  bool cmdLineStatus { processCommandLine(cmdLineArgs, helpRequested, versionRequested, inputFile, outputFile, cipher_key, encrypt) };
 
   // Any failure in the argument processing means we can't continue
   // Use a non-zero return value to indicate failure
@@ -113,7 +113,7 @@ int main(int argc, char* argv[])
   }
 
   // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-  std::string outputText = runCaesarCipher( inputText, caesar_key, encrypt );
+  std::string outputText { runCaesarCipher( inputText, caesar_key, encrypt ) };
 
   // Output the transliterated text
   if (!outputFile.empty()) {
