@@ -7,7 +7,7 @@
 // Our project headers
 #include "TransformChar.hpp"
 #include "ProcessCommandLine.hpp"
-#include "RunCaesarCipher.hpp"
+#include "CaesarCipher.hpp"
   
 // Main function of the mpags-cipher program
 int main(int argc, char* argv[])
@@ -108,7 +108,8 @@ int main(int argc, char* argv[])
   }
 
   // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-  std::string outputText { runCaesarCipher( inputText, caesarKey, settings.encrypt ) };
+  CaesarCipher cipher { caesarKey };
+  std::string outputText { cipher.applyCipher( inputText, settings.encrypt ) };
 
   // Output the transliterated text
   if (!settings.outputFile.empty()) {
