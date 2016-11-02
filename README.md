@@ -102,12 +102,14 @@ MPAGS-Code
 ├── CMakeLists.txt        CMake build script
 ├── mpags-cipher.cpp      Main program C++ source file
 ├── MPAGSCipher           Subdirectory for MPAGSCipher library code
-|   └── ProcessCommandLine.cpp
-|   └── ProcessCommandLine.hpp
-|   └── RunCaesarCipher.cpp
-|   └── RunCaesarCipher.hpp
-|   └── TransformChar.cpp
-|   └── TransformChar.hpp
+│   ├── CaesarCipher.cpp
+│   ├── CaesarCipher.hpp
+│   ├── CipherMode.hpp
+│   ├── ProcessCommandLine.cpp
+│   ├── ProcessCommandLine.hpp
+│   ├── TransformChar.cpp
+│   └── TransformChar.hpp
+├── mpags-cipher.cpp
 ```
 
 # Copying
