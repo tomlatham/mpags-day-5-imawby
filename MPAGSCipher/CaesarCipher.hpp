@@ -1,8 +1,12 @@
 #ifndef MPAGSCIPHER_CAESARCIPHER_HPP
 #define MPAGSCIPHER_CAESARCIPHER_HPP
 
+// Standard library includes
 #include <string>
 #include <vector>
+
+// Our project headers
+#include "CipherMode.hpp"
 
 /**
  * Encrypt or decrypt text using the Caesar cipher with the given key
@@ -20,10 +24,10 @@ class CaesarCipher {
      * Apply the cipher to the provided text
      *
      * \param inputText the text to encrypt or decrypt
-     * \param encrypt whether to encrypt (true) or decrypt (false) the input text
+     * \param cipherMode whether to encrypt or decrypt the input text
      * \return the result of applying the cipher to the input text
      */
-    std::string applyCipher( const std::string& inputText, const bool encrypt ) const;
+    std::string applyCipher( const std::string& inputText, const CipherMode cipherMode ) const;
 
   private:
     /// The alphabet - used to determine the cipher character given the plain character and the key
