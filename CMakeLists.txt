@@ -3,7 +3,7 @@
 
 # - Set CMake requirements then declare project
 cmake_minimum_required(VERSION 3.2)
-project(MPAGSCipher VERSION 0.1.0)
+project(MPAGSCipher VERSION 0.3.0)
 
 # - When Makefiles are generated, output all command lines by default
 #   Do this to begin with so it's easy to see what compiler command/flags
@@ -19,6 +19,9 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror -Wfatal-errors -Wshadow -pedantic")
 
 # - Add the MPAGSCipher subdirectory to the build
 add_subdirectory(MPAGSCipher)
+
+# - Add the Documentation subdirectory to the build
+add_subdirectory(Documentation)
 
 # - Enable testing and add the Testing subdirectory to the build
 enable_testing()

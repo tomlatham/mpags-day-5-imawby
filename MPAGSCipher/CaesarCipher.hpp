@@ -9,7 +9,13 @@
 #include "CipherMode.hpp"
 
 /**
- * Encrypt or decrypt text using the Caesar cipher with the given key
+ * \file CaesarCipher.hpp
+ * \brief Contains the declaration of the CaesarCipher class
+ */
+
+/**
+ * \class CaesarCipher
+ * \brief Encrypt or decrypt text using the Caesar cipher with the given key
  */
 class CaesarCipher {
   public:
@@ -32,6 +38,7 @@ class CaesarCipher {
   private:
     /// The alphabet - used to determine the cipher character given the plain character and the key
     const std::vector<char> alphabet_ = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+
     /// The size of the alphabet
     const std::vector<char>::size_type alphabetSize_ = alphabet_.size();
 
