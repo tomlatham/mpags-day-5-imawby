@@ -8,6 +8,15 @@
 // Our project headers
 #include "CipherMode.hpp"
 
+/**
+ * \file ProcessCommandLine.hpp
+ * \brief Contains the declarations of the data structures and functions associated with the processing of command-line arguments
+ */
+
+/**
+ * \struct ProgramSettings
+ * \brief Holds the settings of the program that can be modified by command-line arguments
+ */
 struct ProgramSettings {
   bool helpRequested;     ///< Indicates the presence of the help flag in the arguments
   bool versionRequested;  ///< Indicates the presence of the version flag in the arguments
@@ -17,7 +26,13 @@ struct ProgramSettings {
   CipherMode cipherMode;  ///< Flag indicating the mode in which the cipher should run (i.e. encrypt or decrypt)
 };
 
-bool processCommandLine(const std::vector<std::string>& args,
-                        ProgramSettings& settings);
+/**
+ * \brief Processes the command-line arguments and modifies accordingly the program settings
+ *
+ * \param args the command-line arguments to be processed
+ * \param settings the program settings to be modified based upon the arguments received
+ * \return true if the arguments could be successfully parsed, false otherwise
+ */
+bool processCommandLine(const std::vector<std::string>& args, ProgramSettings& settings);
 
 #endif // MPAGSCIPHER_PROCESSCOMMANDLINE_HPP 
