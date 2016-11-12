@@ -91,6 +91,10 @@ classical ciphers, it is transliterated using the following rules:
 
 At present only the Caesar Cipher is supported.
 
+# Testing
+
+After building the MPAGSCipher library it can be tested by running `ctest -VV` from the build directory.
+
 # Source Code Layout
 Under this directory, the code and associated files are organised as
 follows:
@@ -101,6 +105,9 @@ MPAGS-Code
 ├── LICENSE               License file, in our case MIT
 ├── CMakeLists.txt        CMake build script
 ├── mpags-cipher.cpp      Main program C++ source file
+├── Documentation         Subdirectory for documentation of the MPAGSCipher library
+│   ├── CMakeLists.txt
+│   └── Doxyfile.in
 ├── MPAGSCipher           Subdirectory for MPAGSCipher library code
 │   ├── CaesarCipher.cpp
 │   ├── CaesarCipher.hpp
@@ -109,7 +116,14 @@ MPAGS-Code
 │   ├── ProcessCommandLine.hpp
 │   ├── TransformChar.cpp
 │   └── TransformChar.hpp
-├── mpags-cipher.cpp
+├── Testing               Subdirectory for testing the MPAGSCipher library
+│   ├── CMakeLists.txt
+│   ├── catch.hpp
+│   ├── testCaesarCipher.cpp
+│   ├── testCatch.cpp
+│   ├── testHello.cpp
+│   ├── testProcessCommandLine.cpp
+│   └── testTransformChar.cpp
 ```
 
 # Copying
