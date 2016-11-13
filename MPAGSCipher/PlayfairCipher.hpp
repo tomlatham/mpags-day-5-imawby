@@ -3,7 +3,7 @@
 
 // Standard library includes
 #include <string>
-#include <vector>
+#include <map>
 
 // Our project headers
 #include "CipherMode.hpp"
@@ -45,6 +45,17 @@ class PlayfairCipher {
   private:
     /// The cipher key
     std::string key_ = "";
+
+    // Lookup tables generated from the key
+
+    /// Type definition for the coordinates in the 5x5 table
+    using PlayfairCoords = std::pair<std::string::size_type,std::string::size_type>;
+
+    /// Lookup table to go from the character to the coordinates
+    std::map<char,PlayfairCoords> charLookup_;
+
+    /// Lookup table to go from the coordinates to the character
+    std::map<PlayfairCoords,char> coordLookup_;
 };
 
 #endif

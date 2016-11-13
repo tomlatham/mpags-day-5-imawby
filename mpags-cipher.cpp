@@ -34,19 +34,29 @@ int main(int argc, char* argv[])
   if (settings.helpRequested) {
     // Line splitting for readability
     std::cout
-      << "Usage: mpags-cipher [-i <file>] [-o <file>] [-k <key>] [--encrypt/--decrypt]\n\n"
+      << "Usage: mpags-cipher [-i/--infile <file>] [-o/--outfile <file>] [-c/--cipher <cipher>] [-k/--key <key>] [--encrypt/--decrypt]\n\n"
       << "Encrypts/Decrypts input alphanumeric text using classical ciphers\n\n"
       << "Available options:\n\n"
-      << "  -h|--help        Print this help message and exit\n\n"
-      << "  --version        Print version information\n\n"
-      << "  -i FILE          Read text to be processed from FILE\n"
-      << "                   Stdin will be used if not supplied\n\n"
-      << "  -o FILE          Write processed text to FILE\n"
-      << "                   Stdout will be used if not supplied\n\n"
-      << "  -k KEY           Specify the cipher KEY\n"
-      << "                   A null key, i.e. no encryption, is used if not supplied\n\n"
-      << "  --encrypt        Will use the cipher to encrypt the input text (default behaviour)\n\n"
-      << "  --decrypt        Will use the cipher to decrypt the input text\n\n";
+      << "  -h|--help\n"
+      << "                      Print this help message and exit\n\n"
+      << "  -v|--version\n"
+      << "                      Print version information\n\n"
+      << "  -i|--infile FILE\n"
+      << "                      Read text to be processed from FILE\n"
+      << "                      Stdin will be used if not supplied\n\n"
+      << "  -o|--outfile FILE\n"
+      << "                      Write processed text to FILE\n"
+      << "                      Stdout will be used if not supplied\n\n"
+      << "  -c|--cipher CIPHER\n"
+      << "                      Specify the cipher to be used to perform the encryption/decryption\n"
+      << "                      CIPHER can either be caesar or playfair - caesar is the default\n\n"
+      << "  -k|--key KEY\n"
+      << "                      Specify the cipher KEY\n"
+      << "                      A null key, i.e. no encryption, is used if not supplied\n\n"
+      << "  --encrypt\n"
+      << "                      Will use the cipher to encrypt the input text (default behaviour)\n\n"
+      << "  --decrypt\n"
+      << "                      Will use the cipher to decrypt the input text\n\n";
     // Help requires no further action, so return from main,
     // with 0 used to indicate success
     return 0;

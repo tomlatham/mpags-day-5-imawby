@@ -53,28 +53,39 @@ line options:
 
 ```
 $ ./mpags-cipher --help
-Usage: mpags-cipher [-i <file>] [-o <file>] [-k <key>] [--encrypt/--decrypt]
+Usage: mpags-cipher [-i/--infile <file>] [-o/--outfile <file>] [-c/--cipher <cipher>] [-k/--key <key>] [--encrypt/--decrypt]
 
 Encrypts/Decrypts input alphanumeric text using classical ciphers
 
 Available options:
 
-  -h|--help        Print this help message and exit
+  -h|--help
+                      Print this help message and exit
 
-  --version        Print version information
+  -v|--version
+                      Print version information
 
-  -i FILE          Read text to be processed from FILE
-                   Stdin will be used if not supplied
+  -i|--infile FILE
+                      Read text to be processed from FILE
+                      Stdin will be used if not supplied
 
-  -o FILE          Write processed text to FILE
-                   Stdout will be used if not supplied
+  -o|--outfile FILE
+                      Write processed text to FILE
+                      Stdout will be used if not supplied
 
-  -k KEY           Specify the cipher KEY
-                   A null key, i.e. no encryption, is used if not supplied
+  -c|--cipher CIPHER
+                      Specify the cipher to be used to perform the encryption/decryption
+                      CIPHER can either be caesar or playfair - caesar is the default
 
-  --encrypt        Will use the cipher to encrypt the input text (default behaviour)
+  -k|--key KEY
+                      Specify the cipher KEY
+                      A null key, i.e. no encryption, is used if not supplied
 
-  --decrypt        Will use the cipher to decrypt the input text
+  --encrypt
+                      Will use the cipher to encrypt the input text (default behaviour)
+
+  --decrypt
+                      Will use the cipher to decrypt the input text
 ```
 
 If no input file is supplied, `mpags-cipher` will wait for user input
@@ -89,7 +100,7 @@ classical ciphers, it is transliterated using the following rules:
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
 - All other characters (punctuation) are discarded
 
-At present only the Caesar Cipher is supported.
+At present, the Caesar and Playfair ciphers are supported.
 
 # Testing
 
@@ -112,6 +123,9 @@ MPAGS-Code
 │   ├── CaesarCipher.cpp
 │   ├── CaesarCipher.hpp
 │   ├── CipherMode.hpp
+│   ├── CipherType.hpp
+│   ├── PlayfairCipher.cpp
+│   ├── PlayfairCipher.hpp
 │   ├── ProcessCommandLine.cpp
 │   ├── ProcessCommandLine.hpp
 │   ├── TransformChar.cpp
@@ -122,6 +136,7 @@ MPAGS-Code
 │   ├── testCaesarCipher.cpp
 │   ├── testCatch.cpp
 │   ├── testHello.cpp
+│   ├── testPlayfairCipher.cpp
 │   ├── testProcessCommandLine.cpp
 │   └── testTransformChar.cpp
 ```

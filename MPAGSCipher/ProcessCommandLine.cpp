@@ -28,11 +28,11 @@ bool processCommandLine(const std::vector<std::string>& args,
       settings.versionRequested = true;
       break;
     }
-    else if (args[i] == "-i") {
+    else if ( args[i] == "-i" || args[i] == "--infile" ) {
       // Handle input file option
       // Next element is filename unless -i is the last argument
       if (i == nArgs-1) {
-        std::cerr << "[error] -i requires a filename argument" << std::endl;
+        std::cerr << "[error] -i/--infile requires a filename argument" << std::endl;
         // Set the flag to indicate the error and terminate the loop
         processStatus = false;
         break;
@@ -43,11 +43,11 @@ bool processCommandLine(const std::vector<std::string>& args,
         ++i;
       }
     }
-    else if (args[i] == "-o") {
+    else if ( args[i] == "-o" || args[i] == "--outfile" ) {
       // Handle output file option
       // Next element is filename unless -o is the last argument
       if (i == nArgs-1) {
-        std::cerr << "[error] -o requires a filename argument" << std::endl;
+        std::cerr << "[error] -o/--outfile requires a filename argument" << std::endl;
         // Set the flag to indicate the error and terminate the loop
         processStatus = false;
         break;
@@ -58,11 +58,11 @@ bool processCommandLine(const std::vector<std::string>& args,
         ++i;
       }
     }
-    else if (args[i] == "-k") {
+    else if ( args[i] == "-k" || args[i] == "--key" ) {
       // Handle cipher key option
       // Next element is the key unless -k is the last argument
       if (i == nArgs-1) {
-        std::cerr << "[error] -k requires a positive integer argument" << std::endl;
+        std::cerr << "[error] -k/--key requires a string argument" << std::endl;
         // Set the flag to indicate the error and terminate the loop
         processStatus = false;
         break;
