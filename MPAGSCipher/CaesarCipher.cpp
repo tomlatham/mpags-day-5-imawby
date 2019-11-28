@@ -57,7 +57,6 @@ std::string CaesarCipher::applyCipher( const std::string& inputText, const Ciphe
     for ( Alphabet::AlphabetSize i{0}; i < Alphabet::size; ++i ) {
 
       if ( origChar == Alphabet::alphabet[i] ) {
-
 	// Apply the appropriate shift (depending on whether we're encrypting
 	// or decrypting) and determine the new character
 	// Can then break out of the loop over the alphabet

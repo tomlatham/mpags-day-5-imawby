@@ -7,6 +7,7 @@
 #include "Alphabet.hpp"
 #include "PlayfairCipher.hpp"
 
+
 PlayfairCipher::PlayfairCipher( const std::string& key )
 {
   this->setKey( key );
