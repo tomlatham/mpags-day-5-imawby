@@ -8,8 +8,7 @@
 #include "CipherFactory.hpp"
 #include "CipherType.hpp"
 
-void testCipher(const Cipher& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText);
-void testCipher(const std::unique_ptr<Cipher>& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText);
+bool testCipher(const Cipher& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText);
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -23,7 +22,7 @@ cipherVector.push_back(cipherFactory(CipherType::Vigenere, "cipherkey"));
 std::vector<std::string> encryptedStrings = {"LCO", "HKTE", "LIB"};
 
   for(size_t i(0); i < cipherVector.size(); ++i) {
-    testCipher(cipherVector[i], CipherMode::Encrypt, "JAM", encryptedStrings[i]);
+    REQUIRE( testCipher(*cipherVector[i], CipherMode::Encrypt, "JAM", encryptedStrings[i]) );
   }
 }
 
@@ -39,7 +38,7 @@ cipherVector.push_back(cipherFactory(CipherType::Vigenere, "cipherkey"));
 std::vector<std::string> decryptedStrings = {"UZEFJRLI", "FCTNLHNC", "BAYHOJKN"};
 
   for(size_t i(0); i < cipherVector.size(); ++i) {
-    testCipher(cipherVector[i], CipherMode::Decrypt, "DINOSAUR", decryptedStrings[i]);
+    REQUIRE( testCipher(*cipherVector[i], CipherMode::Decrypt, "DINOSAUR", decryptedStrings[i]) );
   }
 }
 
@@ -47,57 +46,50 @@ std::vector<std::string> decryptedStrings = {"UZEFJRLI", "FCTNLHNC", "BAYHOJKN"}
 
 TEST_CASE("Caesar Cipher Encrypt Test", "[caesar]") {
   CaesarCipher cipher("2");
-  testCipher(cipher, CipherMode::Encrypt, "JAM", "LCO");
+  REQUIRE( testCipher(cipher, CipherMode::Encrypt, "JAM", "LCO") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 TEST_CASE("Caesar Cipher Decrypt Test", "[caesar]") {
   CaesarCipher cipher("9");
-  testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "UZEFJRLI");
+  REQUIRE( testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "UZEFJRLI") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 TEST_CASE("Playfair Cipher Encrypt Test", "[playfair]") {
   PlayfairCipher cipher("cipherkey");
-  testCipher(cipher, CipherMode::Encrypt, "JAM" , "HKTE");
+  REQUIRE( testCipher(cipher, CipherMode::Encrypt, "JAM" , "HKTE") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 TEST_CASE("Playfair Cipher Decrypt Test", "[playfair]") {
   PlayfairCipher cipher("cipherkey");
-  testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "FCTNLHNC");
+  REQUIRE( testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "FCTNLHNC") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 TEST_CASE("Vigenere Encrypt Cipher", "[vigenere]") {
   VigenereCipher cipher("cipherkey");
-  testCipher(cipher, CipherMode::Encrypt, "JAM", "LIB");
+  REQUIRE( testCipher(cipher, CipherMode::Encrypt, "JAM", "LIB") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
 TEST_CASE("Vigenere Decrypt Cipher", "[vigenere]") {
   VigenereCipher cipher("cipherkey");
-  testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "BAYHOJKN");
+  REQUIRE( testCipher(cipher, CipherMode::Decrypt, "DINOSAUR", "BAYHOJKN") );
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-void testCipher(const Cipher& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText) {
+bool testCipher(const Cipher& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText) {
 
-  std::string cipheredText = cipher.applyCipher(inputText, mode);
-  REQUIRE(cipheredText == outputText);
+  const std::string cipheredText { cipher.applyCipher(inputText, mode) };
+  return (cipheredText == outputText);
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
-
-void testCipher(const std::unique_ptr<Cipher>& cipher, const CipherMode mode, const std::string& inputText, const std::string& outputText) {
-
-  std::string cipheredText = cipher->applyCipher(inputText, mode);
-  REQUIRE(cipheredText == outputText);
-}
-

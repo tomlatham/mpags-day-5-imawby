@@ -75,7 +75,7 @@ Available options:
 
   -c|--cipher CIPHER
                       Specify the cipher to be used to perform the encryption/decryption
-                      CIPHER can either be caesar or playfair - caesar is the default
+                      CIPHER can be caesar, playfair or vigenere - caesar is the default
 
   -k|--key KEY
                       Specify the cipher KEY
@@ -100,7 +100,7 @@ classical ciphers, it is transliterated using the following rules:
 - Digits are translated to their English equivalent words (e.g. '0' -> "ZERO")
 - All other characters (punctuation) are discarded
 
-At present, the Caesar and Playfair ciphers are supported.
+At present, the Caesar, Playfair and Vigenere ciphers are supported.
 
 # Testing
 
@@ -120,8 +120,13 @@ MPAGS-Code
 │   ├── CMakeLists.txt
 │   └── Doxyfile.in
 ├── MPAGSCipher           Subdirectory for MPAGSCipher library code
+│   ├── CMakeLists.txt
+│   ├── Alphabet.hpp
 │   ├── CaesarCipher.cpp
 │   ├── CaesarCipher.hpp
+│   ├── Cipher.hpp
+│   ├── CipherFactory.cpp
+│   ├── CipherFactory.hpp
 │   ├── CipherMode.hpp
 │   ├── CipherType.hpp
 │   ├── PlayfairCipher.cpp
@@ -129,16 +134,20 @@ MPAGS-Code
 │   ├── ProcessCommandLine.cpp
 │   ├── ProcessCommandLine.hpp
 │   ├── TransformChar.cpp
-│   └── TransformChar.hpp
+│   ├── TransformChar.hpp
+│   ├── VigenereCipher.cpp
+│   └── VigenereCipher.hpp
 ├── Testing               Subdirectory for testing the MPAGSCipher library
 │   ├── CMakeLists.txt
 │   ├── catch.hpp
 │   ├── testCaesarCipher.cpp
 │   ├── testCatch.cpp
+│   ├── testCiphers.cpp
 │   ├── testHello.cpp
 │   ├── testPlayfairCipher.cpp
 │   ├── testProcessCommandLine.cpp
-│   └── testTransformChar.cpp
+│   ├── testTransformChar.cpp
+│   └── testVigenereCipher.cpp
 ```
 
 # Copying
